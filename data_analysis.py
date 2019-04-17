@@ -1,3 +1,6 @@
+
+from datetime import datetime  
+from datetime import timedelta
 from collections import defaultdict
 import os
 
@@ -49,7 +52,7 @@ class Activity:
         self.time_start = time
         self.time_end = time2
 
-with open('log.csv', 'r') as data:
+with open('log.txt', 'r') as data:
     for line in data:
         lines = line.split(',')  #Spliteo el CSV
         lines[0] = lines[0].split('-')[0]  #Elimino la info del video y dejo solo el num del CaseID
@@ -63,7 +66,6 @@ with open('log.csv', 'r') as data:
             all_cases[-1].add_activity(temp)
             all_cases[-1].pre_or_post = lines[2]
             used_ids.append(lines[0])
-
 
 try:
     os.mkdir(os.path.join(os.getcwd(), 'Exported Results'))
@@ -119,6 +121,19 @@ def Print_Info(all_case, all_results = False):
                 exported.append(prints)
         print(' ')
         exported.append(' ')
+        
+        time_one = datetime.strptime(case.activities[0].time_start.split(" ")[1][:], "%H:%M:%S")
+        time_two = datetime.strptime(case.activities[-1].time_end.split(" ")[1][:], "%H:%M:%S")
+        delta = time_two - time_one
+        
+        condition = timedelta(days = 0, minutes = 0, seconds = 0)
+        
+        if delta < condition:
+            delta += timedelta(days = 1)
+        #print(delta)
+        
+        print(f"Total Duration: {delta}")
+        exported.append(f"Total Duration: {delta}")
 
         Print_Stats(case, all_results)
 
