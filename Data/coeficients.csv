@@ -1,0 +1,49 @@
+('Puncture', 'Puncture')  :  1
+('Puncture', 'Guidewire install')  :  1
+('Puncture', 'Remove trocar')  :  1
+('Puncture', 'Advance catheter')  :  1
+('Puncture', 'Remove guidewire')  :  1
+('Puncture', 'Widen pathway')  :  1
+('Puncture', 'Remove syringe')  :  1
+('Guidewire install', 'Puncture')  :  1
+('Guidewire install', 'Guidewire install')  :  1
+('Guidewire install', 'Remove trocar')  :  1
+('Guidewire install', 'Advance catheter')  :  1
+('Guidewire install', 'Remove guidewire')  :  1
+('Guidewire install', 'Widen pathway')  :  1
+('Guidewire install', 'Remove syringe')  :  1
+('Remove trocar', 'Puncture')  :  1
+('Remove trocar', 'Guidewire install')  :  1
+('Remove trocar', 'Remove trocar')  :  1
+('Remove trocar', 'Advance catheter')  :  1
+('Remove trocar', 'Remove guidewire')  :  1
+('Remove trocar', 'Widen pathway')  :  1
+('Remove trocar', 'Remove syringe')  :  1
+('Advance catheter', 'Puncture')  :  1
+('Advance catheter', 'Guidewire install')  :  1
+('Advance catheter', 'Remove trocar')  :  1
+('Advance catheter', 'Advance catheter')  :  1
+('Advance catheter', 'Remove guidewire')  :  1
+('Advance catheter', 'Widen pathway')  :  1
+('Advance catheter', 'Remove syringe')  :  1
+('Remove guidewire', 'Puncture')  :  1
+('Remove guidewire', 'Guidewire install')  :  1
+('Remove guidewire', 'Remove trocar')  :  1
+('Remove guidewire', 'Advance catheter')  :  1
+('Remove guidewire', 'Remove guidewire')  :  1
+('Remove guidewire', 'Widen pathway')  :  1
+('Remove guidewire', 'Remove syringe')  :  1
+('Widen pathway', 'Puncture')  :  1
+('Widen pathway', 'Guidewire install')  :  1
+('Widen pathway', 'Remove trocar')  :  1
+('Widen pathway', 'Advance catheter')  :  1
+('Widen pathway', 'Remove guidewire')  :  1
+('Widen pathway', 'Widen pathway')  :  1
+('Widen pathway', 'Remove syringe')  :  1
+('Remove syringe', 'Puncture')  :  1
+('Remove syringe', 'Guidewire install')  :  1
+('Remove syringe', 'Remove trocar')  :  1
+('Remove syringe', 'Advance catheter')  :  1
+('Remove syringe', 'Remove guidewire')  :  1
+('Remove syringe', 'Widen pathway')  :  1
+('Remove syringe', 'Remove syringe')  :  1
