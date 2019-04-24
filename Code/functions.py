@@ -1,3 +1,5 @@
+from random import shuffle
+
 los_jinetes = ["Puncture", "Guidewire install", "Remove trocar", "Advance catheter", "Remove guidewire"]
 los_jinetes += ["Widen pathway", "Remove syringe"]
 
@@ -94,12 +96,11 @@ v2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
 v3 = [1, 0, 0, 0, 0, 0, 2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0]
 
 def basic_travel_sorting(vector_list, distance_algorithm):
-
     vector_list = vector_list[:]
     final = [vector_list[0]]
     total_distance = 0
 
-    print(vector_list[0])
+    #print(vector_list[0])
     for vector1 in final:
 
         siguente = None
@@ -110,6 +111,7 @@ def basic_travel_sorting(vector_list, distance_algorithm):
 
         for vector2 in vector_list:
 
+            #print(distance_algorithm(vector1, vector2))
             if siguente is None:
                 siguente = vector2
 
@@ -119,12 +121,90 @@ def basic_travel_sorting(vector_list, distance_algorithm):
 
         final.append(siguente)
         total_distance += distance_algorithm(vector1, siguente)
-        print(distance_algorithm(vector1, siguente))
-        print(siguente)
+        #print(f"{distance_algorithm(vector1, siguente)} final distance")
+        #print(siguente)
 
-    print(total_distance)
-    return final
+    #print(total_distance)
+    return final, total_distance
+
+def iterative_func_ordered_1(vector_list, distance_alorithm):
+
+    best = None
+    best_distance = None
+    count = 0
+    for x in range(len(vector_list)):
+        count += 1
+        new_list = [vector_list[x]] + vector_list[x + 1:] + vector_list[:x]
+
+        lista, distance = basic_travel_sorting(new_list, distance_alorithm)
+
+        if best is None:
+            best = lista[:]
+            best_distance = distance
+        else:
+            if distance <= basic_travel_sorting(best, distance_alorithm)[1]:
+                best = lista[:]
+                best_distance = distance
+
+    print(f"total vectors: {count}")
+    print(f"best_distance:  {best_distance}")
+    #print(f"best vector_list:  {best}")
+    return best, best_distance
 
 
+def iterative_func_random_1(vector_list, distance_algorithm, max_count):
 
+    best = None
+    best_distance = None
+    cycle = 0
+    counter = 0
 
+    while counter < max_count:
+
+        new_list = vector_list[:]
+        shuffle(new_list)
+
+        cycle += 1
+        lista, distance = basic_travel_sorting(new_list, distance_algorithm)
+
+        if best is None:
+            best = lista[:]
+            best_distance = distance
+        else:
+            if distance <= best_distance:
+                best_distance = distance
+                best = lista[:]
+            else:
+                counter += 1
+
+    #print(f"Best List: {best}")
+    print(f"Best Distance: {best_distance}")
+    print(f"Total cycles: {cycle}")
+
+    return best, best_distance
+
+def Test(vectors, distance_alogrithm, iter_count):
+
+    lista, distancia = iterative_func_ordered_1(vectors, distance_alogrithm)
+    print("****************************************************************************")
+    lista2, distancia2 = iterative_func_random_1(vectors, distance_alogrithm, iter_count)
+    print("****************************************************************************")
+
+    print(lista)
+    print(lista2)
+    print("****************************************************************************")
+    if lista == lista2:
+        print("las listas son iguales")
+
+def ManhattanTest(vector_list):
+
+    distance = 0
+
+    for i in range(len(vector_list)):
+
+        try:
+            distance += distance_manhattan(vector_list[i], vector_list[i + 1])
+        except IndexError:
+            None
+
+    return distance

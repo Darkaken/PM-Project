@@ -1,10 +1,7 @@
 
+hola = [1, 2, 3, 4, 5]
 
-i = [1]
+import random
 
-for x in i:
-
-    i.append(2)
-
-    print(i)
-
+random.shuffle(hola)
+print(hola)
