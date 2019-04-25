@@ -2,10 +2,10 @@ REPOSITORIO DEL PROBLEMA DE ORDENAMIENTO DE VECTORES
 
 ______________________________________________________________________
 
-V1.0
+v1.0
 
 Nota:
-Leer el docstring de cada funcion para explicacion mas detallada sobre el funcionamiento de estas. 
+Leer el docstring de cada funcion para explicacion mas detallada sobre el funcionamiento de esta. 
 
 
    1. Funciones de distancia:
