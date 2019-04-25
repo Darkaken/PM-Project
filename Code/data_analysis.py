@@ -57,4 +57,7 @@ for instance in all_cases:
 ############################# Instancing and Analysis ###########################
 
 
-Test(all_vectors, distance_manhattan, 200)
+#Test(all_vectors, distance_manhattan, 200)
+
+for line in distance_matrix(all_vectors, distance_manhattan, True):
+    print(line)

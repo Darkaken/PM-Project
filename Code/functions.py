@@ -1,5 +1,6 @@
 from random import shuffle
-
+import os
+from statistics import mean
 
 ############################## Important Activity Definition #################################
 
@@ -97,7 +98,7 @@ def distance_levenshtein(vector1, vector2):
 
     return d[len(str1)][len(str2)]
 
-############################## Sorting Algorithm Definition #################################
+############################## Sorting Algorithm Definition (TSP) #################################
 
 def basic_travel_sorting(vector_list, distance_algorithm):
 
@@ -310,8 +311,61 @@ def ManhattanTest(vector_list):
 
     return distance
 
+def distance_matrix(vector_list, distance_algorithm, save = False):
+
+    """
+
+    Function that creates a matrix of manhattan distances between all the vectors
+    and stores it in matrix.txt if save = True
+
+    """
+
+    os.chdir(os.path.join(os.getcwd(), 'Exported Results'))
+
+    alpha = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    matrix = [[' ' + letter + ' ' for letter in alpha[:len(vector_list) + 1]]]
+    all_values = []
+
+    for char1 in vector_list:
+
+        line = [' ' + alpha[len(matrix)] + ' ']
+        for char2 in vector_list:
+
+            distance = distance_algorithm(char1, char2)
+            all_values.append(distance)
+
+            if len(str(distance)) == 1:
+                distance = '|' + str(distance) + '|'
+
+            elif len(str(distance)) == 2:
+                distance = str(distance) + ' '
+
+            line.append(distance)
+
+        matrix.append(line)
+
+    if save is True:
+
+        file =  open('matrix.txt', 'w+')
+
+        for element in matrix:
+            file.write(' '.join(element))
+            file.write('\n')
+
+        file.write('\n')
+        file.write(f'Average Distance = {mean(all_values)}')
+        file.write('\n')
+        file.write('\n')
+        file.write(f'Maximum Distance = {max(all_values)}')
+        file.write('\n')
+        file.write(f'Minimum Distance = {min(all_values)}')
 
 
+        file.close()
+
+    os.chdir('..')
+    return matrix
 
 
 
