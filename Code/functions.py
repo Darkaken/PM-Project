@@ -1,7 +1,13 @@
 from random import shuffle
 
+
+############################## Important Activity Definition #################################
+
 los_jinetes = ["Puncture", "Guidewire install", "Remove trocar", "Advance catheter", "Remove guidewire"]
 los_jinetes += ["Widen pathway", "Remove syringe"]
+
+
+################### Log Filtering, Pair Definition and Vector Calculation ####################
 
 def filter_acts(log, important):
 
@@ -53,6 +59,7 @@ def vector_calculation(case, coef):   #Direct Succesion
 
     return vector
 
+############################## Distance Function Definition #################################
 
 def distance_manhattan(vector1, vector2):
 
@@ -90,17 +97,36 @@ def distance_levenshtein(vector1, vector2):
 
     return d[len(str1)][len(str2)]
 
-
-v1 = [0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0]
-v2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
-v3 = [1, 0, 0, 0, 0, 0, 2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0]
+############################## Sorting Algorithm Definition #################################
 
 def basic_travel_sorting(vector_list, distance_algorithm):
+
+    """
+
+    Input:
+
+        a) Vector List (equal length vectors) (type = list)
+        b) Distance Algorithm (type = func)
+
+
+    Explanation:
+
+        Taking the first vector as a starting point, the algorithm finds the nearest vector and adds it to
+        the Final Vector List. Then, it takes the second vector and finds the nearest vector to it (excluding
+        the first one), and adds it to the Final Vector List. This process happens iteratively until there are no
+        more new vectors available. Lastly, the total distance between vectors is calculated as Total Distance.
+
+    Output:
+
+        a) Final Vector List (type = list)
+        b) Total Distance (type = float or int, depending on the distance algorithm)
+
+    """
+
     vector_list = vector_list[:]
     final = [vector_list[0]]
     total_distance = 0
 
-    #print(vector_list[0])
     for vector1 in final:
 
         siguente = None
@@ -111,7 +137,6 @@ def basic_travel_sorting(vector_list, distance_algorithm):
 
         for vector2 in vector_list:
 
-            #print(distance_algorithm(vector1, vector2))
             if siguente is None:
                 siguente = vector2
 
@@ -121,19 +146,48 @@ def basic_travel_sorting(vector_list, distance_algorithm):
 
         final.append(siguente)
         total_distance += distance_algorithm(vector1, siguente)
-        #print(f"{distance_algorithm(vector1, siguente)} final distance")
-        #print(siguente)
 
-    #print(total_distance)
     return final, total_distance
 
 def iterative_func_ordered_1(vector_list, distance_alorithm):
 
+    """
+
+    Input:
+
+        a) Vector List (equal length vectors) (type = list)
+        b) Distance Algorithm (type = func)
+
+
+    Explanation:
+
+        For every vector in the vector list: a new list is created with the selected vector at position 0
+        and sets the rest of the vectors according to their previous position.
+
+        Example:
+
+            If we have a list of vectors [a, b, c, d], the new lists will be:
+
+                [a, b, c, d]  (original list)
+                [b, c, d, a]
+                [c, d, a, b]
+                [d, a, b, c]
+
+        For each new list, the basic_travel_sorting() algorithm is executed. The results are compared and
+        the minimum distance and corresponding list are saved in the variables best_distance and best(list)
+        accordingly.
+
+    Output:
+
+        a) Best Vector List (type = list)
+        b) Best Distance (type = float or int, depending on the distance algorithm)
+
+    """
+
     best = None
     best_distance = None
-    count = 0
+
     for x in range(len(vector_list)):
-        count += 1
         new_list = [vector_list[x]] + vector_list[x + 1:] + vector_list[:x]
 
         lista, distance = basic_travel_sorting(new_list, distance_alorithm)
@@ -146,17 +200,37 @@ def iterative_func_ordered_1(vector_list, distance_alorithm):
                 best = lista[:]
                 best_distance = distance
 
-    print(f"total vectors: {count}")
-    print(f"best_distance:  {best_distance}")
-    #print(f"best vector_list:  {best}")
     return best, best_distance
-
 
 def iterative_func_random_1(vector_list, distance_algorithm, max_count):
 
+    """
+
+    Input:
+
+        a) Vector List (equal length vectors) (type = list)
+        b) Distance Algorithm (type = func)
+        c) Max Count (type = int)
+
+
+    Explanation:
+
+        This algorithm shuffles !randomly! the provided list of vectors and uses the basic_travel_sorting()
+        algorithm to obtain a local minimum list of vectors and its according total distance. If the new distance
+        is better than the previous best, the best distance is redefined as the new distance. If no improvement
+        is achieved in {Max Count} cycles, the algorithm stops and returns the best list obtained and the according
+        total distance.
+
+    Output:
+
+        a) Best Vector List (type = list)
+        b) Best Distance (type = float or int, depending on the distance algorithm)
+
+    """
+
     best = None
     best_distance = None
-    cycle = 0
+    cycle = 0               #Total cycles
     counter = 0
 
     while counter < max_count:
@@ -174,37 +248,82 @@ def iterative_func_random_1(vector_list, distance_algorithm, max_count):
             if distance <= best_distance:
                 best_distance = distance
                 best = lista[:]
+                counter = 0
             else:
                 counter += 1
 
-    #print(f"Best List: {best}")
-    print(f"Best Distance: {best_distance}")
-    print(f"Total cycles: {cycle}")
-
     return best, best_distance
+
+
+############################## Custom Function Definition #################################
+
 
 def Test(vectors, distance_alogrithm, iter_count):
 
-    lista, distancia = iterative_func_ordered_1(vectors, distance_alogrithm)
-    print("****************************************************************************")
-    lista2, distancia2 = iterative_func_random_1(vectors, distance_alogrithm, iter_count)
-    print("****************************************************************************")
+    """
 
-    print(lista)
-    print(lista2)
-    print("****************************************************************************")
-    if lista == lista2:
+    Algorithm that prints the results of the ordered iterative algorithm and the random iterative algorithm
+    given a vector list and a distance algorithm, and compares the results.
+
+    """
+
+    lista1, distancia1 = iterative_func_ordered_1(vectors, distance_alogrithm)
+    lista2, distancia2 = iterative_func_random_1(vectors, distance_alogrithm, iter_count)
+
+    print(' ')
+    print(f"Distancia IFO1: {distancia1}")
+    print("Mejor Lista IFO1:")
+
+    print(' ')
+    for vector in lista1:
+        print(vector)
+
+    print(' ')
+
+    print(f"Distancia IFR1: {distancia2}")
+    print("Mejor Lista IFR1:")
+
+    print(' ')
+    for vector in lista2:
+        print(vector)
+
+    if lista1 == lista2:
+        print(' ')
         print("las listas son iguales")
 
 def ManhattanTest(vector_list):
 
+    """
+
+    Given a vector list, returns the sum of the manhattan distances between vectors in a secuence.
+
+    """
+
     distance = 0
 
-    for i in range(len(vector_list)):
+    for index in range(len(vector_list)):
 
         try:
-            distance += distance_manhattan(vector_list[i], vector_list[i + 1])
+            distance += distance_manhattan(vector_list[index], vector_list[index + 1])
         except IndexError:
-            None
+            continue
 
     return distance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
