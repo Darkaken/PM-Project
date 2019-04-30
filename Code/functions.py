@@ -203,30 +203,25 @@ def iterative_func_ordered_1(vector_list, distance_alorithm):
 
     return best, best_distance
 
-def iterative_func_random_1(vector_list, distance_algorithm, max_count):
+def random_solve(vector_list, max_count):
 
     """
-
+    
     Input:
-
         a) Vector List (equal length vectors) (type = list)
-        b) Distance Algorithm (type = func)
-        c) Max Count (type = int)
-
-
+        b) Max Count (type = int)
+        
     Explanation:
-
-        This algorithm shuffles !randomly! the provided list of vectors and uses the basic_travel_sorting()
+        This algorithm shuffles !randomly! the provided list of vectors and uses the …
         algorithm to obtain a local minimum list of vectors and its according total distance. If the new distance
         is better than the previous best, the best distance is redefined as the new distance. If no improvement
         is achieved in {Max Count} cycles, the algorithm stops and returns the best list obtained and the according
         total distance.
-
+        
     Output:
-
         a) Best Vector List (type = list)
         b) Best Distance (type = float or int, depending on the distance algorithm)
-
+        
     """
 
     best = None
@@ -234,25 +229,20 @@ def iterative_func_random_1(vector_list, distance_algorithm, max_count):
     cycle = 0               #Total cycles
     counter = 0
 
-    while counter < max_count:
-
-        new_list = vector_list[:]
-        shuffle(new_list)
-
-        cycle += 1
-        lista, distance = basic_travel_sorting(new_list, distance_algorithm)
-
+    for number in range(max_count):
+        test = vector_list[:]
+        test.shuffle()
+        
+        result = ManhattanTest(test)
+        
         if best is None:
-            best = lista[:]
-            best_distance = distance
+            best = test[:]
+            best_distance = result
         else:
-            if distance <= best_distance:
-                best_distance = distance
-                best = lista[:]
-                counter = 0
-            else:
-                counter += 1
-
+            if result <= best_distance:
+                best_distance = result
+                best = test[:]
+               
     return best, best_distance
 
 
