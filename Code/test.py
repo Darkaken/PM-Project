@@ -1,7 +1,5 @@
 
-import random
 
-hola = [1, 2, 3, 4, 5]
+l1ist = [1, 2, 3, 4, 5]
 
-random.shuffle(hola)
-print(hola)
+print(str(l1ist))

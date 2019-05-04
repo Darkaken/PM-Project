@@ -1,5 +1,7 @@
 import os
 from Code.functions import *  #All functions are stored here (functions.py)
+from Code.bruteforce import *
+
 
 #######################  DEFINITIONS  #######################################
 
@@ -57,7 +59,49 @@ for instance in all_cases:
 ############################# Instancing and Analysis ###########################
 
 
-#Test(all_vectors, distance_manhattan, 200)
+#Test(all_vectors, distance_manhattan)
 
-for line in distance_matrix(all_vectors, distance_manhattan, True):
-    print(line)
+
+
+def GetVectors(vector_list):
+
+    original = []
+
+    for vector in vector_list:
+        if vector in original:
+            pass
+        else:
+            original.append(vector)
+
+    return original
+
+
+new_vects = GetVectors(all_vectors[:])
+
+#Test(new_vects, distance_manhattan, 200)
+
+results = Solve(new_vects[:])
+
+os.chdir(os.path.join("..", "Data/Exported Results"))
+
+with open("mejorOrdenamiento", "w") as file:
+
+    file.write("MEJORES SOLUCIONES ENCONTRADAS:")
+    file.write("\n")
+    file.write("\n")
+
+    for result in results:
+
+        file.write(f"Distancia: {ManhattanTest(result)}")
+        file.write("\n")
+
+        for line in result:
+            file.write(str(line))
+            file.write("\n")
+
+        file.write("\n")
+        file.write("\n")
+
+
+        
+

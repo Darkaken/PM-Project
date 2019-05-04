@@ -62,6 +62,26 @@ def vector_calculation(case, coef):   #Direct Succesion
 
 ############################## Distance Function Definition #################################
 
+def ManhattanTest(vector_list):
+
+    """
+
+    Given a vector list, returns the sum of the manhattan distances between vectors in a secuence.
+
+    """
+
+    distance = 0
+
+    for index in range(len(vector_list)):
+
+        try:
+            distance += distance_manhattan(vector_list[index], vector_list[index + 1])
+        except IndexError:
+            continue
+
+    return distance
+
+
 def distance_manhattan(vector1, vector2):
 
     vector = []
@@ -212,11 +232,9 @@ def random_solve(vector_list, max_count):
         b) Max Count (type = int)
         
     Explanation:
-        This algorithm shuffles !randomly! the provided list of vectors and uses the …
-        algorithm to obtain a local minimum list of vectors and its according total distance. If the new distance
-        is better than the previous best, the best distance is redefined as the new distance. If no improvement
-        is achieved in {Max Count} cycles, the algorithm stops and returns the best list obtained and the according
-        total distance.
+        This algorithm takes a random valid permutation of the provided vector list and
+        computes its Manhattan Distance. This is done {max_count} times, saving the best
+        distance and corresponding permutation
         
     Output:
         a) Best Vector List (type = list)
@@ -226,12 +244,10 @@ def random_solve(vector_list, max_count):
 
     best = None
     best_distance = None
-    cycle = 0               #Total cycles
-    counter = 0
 
     for number in range(max_count):
         test = vector_list[:]
-        test.shuffle()
+        shuffle(test)
         
         result = ManhattanTest(test)
         
@@ -245,11 +261,10 @@ def random_solve(vector_list, max_count):
                
     return best, best_distance
 
-
 ############################## Custom Function Definition #################################
 
 
-def Test(vectors, distance_alogrithm, iter_count):
+def Test(vectors, distance_alogrithm, count):
 
     """
 
@@ -259,7 +274,7 @@ def Test(vectors, distance_alogrithm, iter_count):
     """
 
     lista1, distancia1 = iterative_func_ordered_1(vectors, distance_alogrithm)
-    lista2, distancia2 = iterative_func_random_1(vectors, distance_alogrithm, iter_count)
+    lista2, distancia2 = random_solve(vectors, count)
 
     print(' ')
     print(f"Distancia IFO1: {distancia1}")
@@ -269,37 +284,6 @@ def Test(vectors, distance_alogrithm, iter_count):
     for vector in lista1:
         print(vector)
 
-    print(' ')
-
-    print(f"Distancia IFR1: {distancia2}")
-    print("Mejor Lista IFR1:")
-
-    print(' ')
-    for vector in lista2:
-        print(vector)
-
-    if lista1 == lista2:
-        print(' ')
-        print("las listas son iguales")
-
-def ManhattanTest(vector_list):
-
-    """
-
-    Given a vector list, returns the sum of the manhattan distances between vectors in a secuence.
-
-    """
-
-    distance = 0
-
-    for index in range(len(vector_list)):
-
-        try:
-            distance += distance_manhattan(vector_list[index], vector_list[index + 1])
-        except IndexError:
-            continue
-
-    return distance
 
 def distance_matrix(vector_list, distance_algorithm, save = False):
 
