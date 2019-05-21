@@ -1,7 +1,6 @@
 import os
-from Code.functions import *  #All functions are stored here (functions.py)
-from Code.bruteforce import *
-
+import Code.functions as func
+import Code.bruteforce as bf
 
 #######################  DEFINITIONS  #######################################
 
@@ -15,7 +14,7 @@ class Instance(object):
         self.vector = None
 
     def set_vector(self, coef):
-        self.vector = vector_calculation(self, coef)
+        self.vector = func.vector_calculation(self, coef)
 
     def add_activity(self, other):
         self.activities.append(other)
@@ -35,7 +34,7 @@ used_ids = []
 os.chdir(os.path.join("..", "Data"))
 
 with open('log.csv', 'r') as data:
-    data = filter_acts(data, los_jinetes)
+    data = func.filter_acts(data, func.los_jinetes)
 
     for line in data:
         line = line.split(",")
@@ -58,11 +57,6 @@ for instance in all_cases:
 
 ############################# Instancing and Analysis ###########################
 
-
-#Test(all_vectors, distance_manhattan)
-
-
-
 def GetVectors(vector_list):
 
     original = []
@@ -78,13 +72,10 @@ def GetVectors(vector_list):
 
 new_vects = GetVectors(all_vectors[:])
 
-#Test(new_vects, distance_manhattan, 200)
-
-results = Solve(new_vects[:])
+results = bf.Solve(new_vects[:])
 
 os.chdir(os.path.join("..", "Data/Exported Results"))
-
-with open("mejorOrdenamiento", "w") as file:
+with open("mejorOrdenamiento.txt", "w") as file:
 
     file.write("MEJORES SOLUCIONES ENCONTRADAS:")
     file.write("\n")
@@ -92,7 +83,7 @@ with open("mejorOrdenamiento", "w") as file:
 
     for result in results:
 
-        file.write(f"Distancia: {ManhattanTest(result)}")
+        file.write(f"Distancia: {func.ManhattanTest(result)}")
         file.write("\n")
 
         for line in result:
@@ -102,6 +93,9 @@ with open("mejorOrdenamiento", "w") as file:
         file.write("\n")
         file.write("\n")
 
+    file.write('Orden de IDs: \n')
+    for line in func.ListIDs(results[0], all_cases):
+        file.write(f'{line} \n')
 
 
 

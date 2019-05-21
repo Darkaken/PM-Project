@@ -1,4 +1,3 @@
-from random import shuffle
 import os
 from statistics import mean
 
@@ -7,6 +6,19 @@ from statistics import mean
 los_jinetes = ["Puncture", "Guidewire install", "Remove trocar", "Advance catheter", "Remove guidewire"]
 los_jinetes += ["Widen pathway", "Remove syringe"]
 
+#################################### ID Identification ######################################
+
+def GetID(vector, cases):
+
+    result = []
+    for obj in cases:
+        if obj.vector == vector:
+            result.append(obj.case_id)
+    return result
+
+def ListIDs(vector_list, cases):
+
+    return [GetID(x, cases) for x in vector_list]
 
 ################### Log Filtering, Pair Definition and Vector Calculation ####################
 
@@ -223,58 +235,19 @@ def iterative_func_ordered_1(vector_list, distance_alorithm):
 
     return best, best_distance
 
-def random_solve(vector_list, max_count):
-
-    """
-    
-    Input:
-        a) Vector List (equal length vectors) (type = list)
-        b) Max Count (type = int)
-        
-    Explanation:
-        This algorithm takes a random valid permutation of the provided vector list and
-        computes its Manhattan Distance. This is done {max_count} times, saving the best
-        distance and corresponding permutation
-        
-    Output:
-        a) Best Vector List (type = list)
-        b) Best Distance (type = float or int, depending on the distance algorithm)
-        
-    """
-
-    best = None
-    best_distance = None
-
-    for number in range(max_count):
-        test = vector_list[:]
-        shuffle(test)
-        
-        result = ManhattanTest(test)
-        
-        if best is None:
-            best = test[:]
-            best_distance = result
-        else:
-            if result <= best_distance:
-                best_distance = result
-                best = test[:]
-               
-    return best, best_distance
-
 ############################## Custom Function Definition #################################
 
 
-def Test(vectors, distance_alogrithm, count):
+def Test(vectors, distance_alogrithm):
 
     """
 
-    Algorithm that prints the results of the ordered iterative algorithm and the random iterative algorithm
-    given a vector list and a distance algorithm, and compares the results.
+    Algorithm that prints the results of the ordered iterative algorithm
+    given a vector list and a distance algorithm.
 
     """
 
     lista1, distancia1 = iterative_func_ordered_1(vectors, distance_alogrithm)
-    lista2, distancia2 = random_solve(vectors, count)
 
     print(' ')
     print(f"Distancia IFO1: {distancia1}")

@@ -25,16 +25,6 @@ class DataBase(object):
 
     def CheckDistance(self):
 
-        #if len(self.path) == 1:
-        #    return True
-
-        #for line in self.path:
-        #    print(line)
-
-        #print("***********************************")
-
-
-
         if ManhattanTest(self.path[:]) > 39:
             return False
         return True
@@ -77,7 +67,7 @@ def RecurSolve(BaseDeDatos, vectors):
 
         return BaseDeDatos.soluciones
 
-def GetVectors(vector_list):
+def GetVectorss(vector_list):
 
     original = []
 
@@ -93,7 +83,7 @@ def GetVectors(vector_list):
 def Solve(all_vectors):
 
     Datos = DataBase()
-    result = RecurSolve(Datos, GetVectors(all_vectors))
+    result = RecurSolve(Datos, GetVectorss(all_vectors))
 
     for res in result:
         print(f"Distance: {ManhattanTest(res)}")
