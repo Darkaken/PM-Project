@@ -335,23 +335,7 @@ def distance_matrix(vector_list, distance_algorithm, save = False):
         file.write('\n')
         file.write(f'Minimum Distance = {min(all_values)}')
 
-
         file.close()
 
     os.chdir('..')
     return matrix
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

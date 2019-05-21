@@ -103,5 +103,5 @@ with open("mejorOrdenamiento", "w") as file:
         file.write("\n")
 
 
-        
+
 
