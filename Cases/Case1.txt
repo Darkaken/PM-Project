@@ -1,0 +1,34 @@
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721527931,Prepare implements,Operator and Patient Preparation,1/17/2019 1:00:44,1/17/2019 1:01:07,44,67
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721554703,Ultrasound configuration,Ultrasound Preparation,1/17/2019 1:01:13,1/17/2019 1:03:13,73,193
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721689818,Anatomic identification,Locate Structures,1/17/2019 1:02:51,1/17/2019 1:02:51,171,171
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721691007,Compression identification,Locate Structures,1/17/2019 1:02:52,1/17/2019 1:02:52,172,172
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721705769,Doppler identification,Locate Structures,1/17/2019 1:03:06,1/17/2019 1:03:27,186,207
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721742483,Get in sterile clothes,Operator and Patient Preparation,1/17/2019 1:03:43,1/17/2019 1:04:09,223,249
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721770006,Hand washing,Operator and Patient Preparation,1/17/2019 1:04:11,1/17/2019 1:04:16,251,256
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721778121,Get in sterile clothes,Operator and Patient Preparation,1/17/2019 1:04:19,1/17/2019 1:06:17,259,377
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721863853,Prepare implements,Operator and Patient Preparation,1/17/2019 1:06:19,1/17/2019 1:06:40,379,400
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721883577,Clean puncture area,Operator and Patient Preparation,1/17/2019 1:06:42,1/17/2019 1:06:52,402,412
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721896164,Drap puncture area,Operator and Patient Preparation,1/17/2019 1:06:55,1/17/2019 1:07:32,415,452
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721936286,Prepare implements,Operator and Patient Preparation,1/17/2019 1:07:35,1/17/2019 1:08:20,455,500
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721984199,Gel in probe,Ultrasound Preparation,1/17/2019 1:08:23,1/17/2019 1:08:29,503,509
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547721993333,Cover probe,Ultrasound Preparation,1/17/2019 1:08:32,1/17/2019 1:09:12,512,552
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722045593,Prepare implements,Operator and Patient Preparation,1/17/2019 1:09:24,1/17/2019 1:09:50,564,590
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722078335,Put sterile gel,Ultrasound Preparation,1/17/2019 1:09:57,1/17/2019 1:10:23,597,623
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722162625,Anesthetize,Venous puncture,1/17/2019 1:10:25,1/17/2019 1:10:32,625,632
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722173354,Prepare implements,Operator and Patient Preparation,1/17/2019 1:10:36,1/17/2019 1:11:28,636,688
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722228639,Position probe,Ultrasound Preparation,1/17/2019 1:11:31,1/17/2019 1:11:41,691,701
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722242896,Puncture,Venous puncture,1/17/2019 1:11:46,1/17/2019 1:12:05,706,725
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722303490,Blood return,Venous puncture,1/17/2019 1:12:05,1/17/2019 1:12:06,725,726
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722306001,Drop probe,Install Guidewire,1/17/2019 1:12:08,1/17/2019 1:12:08,728,728
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722311574,Remove syringe,Install Guidewire,1/17/2019 1:12:13,1/17/2019 1:12:25,733,745
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722326774,Guidewire install,Install Guidewire,1/17/2019 1:12:28,1/17/2019 1:12:46,748,766
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722383117,Remove trocar,Install Guidewire,1/17/2019 1:12:47,1/17/2019 1:12:51,767,771
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722389142,Check wire in short axis,Install Guidewire,1/17/2019 1:12:53,1/17/2019 1:13:03,773,783
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722399472,Check wire in long axis,Install Guidewire,1/17/2019 1:13:04,1/17/2019 1:13:06,784,786
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722402473,Wire in good position,Install Guidewire,1/17/2019 1:13:07,1/17/2019 1:13:07,787,787
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722406229,Widen pathway,Install Catheter,1/17/2019 1:13:11,1/17/2019 1:13:30,791,810
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722429628,Advance catheter,Install Catheter,1/17/2019 1:13:34,1/17/2019 1:16:25,814,985
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722528860,Check wire in long axis,Install Guidewire,1/17/2019 1:15:13,1/17/2019 1:15:23,913,923
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722658137,Remove guidewire,Install Catheter,1/17/2019 1:16:22,1/17/2019 1:16:31,982,991
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722671280,Check flow and reflow,Install Catheter,1/17/2019 1:16:35,1/17/2019 1:17:32,995,1052
+1547722738650-video_1.d_CVC,R_14_1D,Post,1547722731676,Check catheter position,Install Catheter,1/17/2019 1:17:35,1/17/2019 1:17:35,1055,1055

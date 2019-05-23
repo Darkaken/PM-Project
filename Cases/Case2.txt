@@ -1,0 +1,31 @@
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547996700471,Prepare implements,Operator and Patient Preparation,1/20/2019 1:00:16,1/20/2019 1:01:06,16,66
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547996752341,Get in sterile clothes,Operator and Patient Preparation,1/20/2019 1:01:07,1/20/2019 1:01:46,67,106
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547996803318,Hand washing,Operator and Patient Preparation,1/20/2019 1:01:48,1/20/2019 1:02:07,108,127
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547996824135,Get in sterile clothes,Operator and Patient Preparation,1/20/2019 1:02:09,1/20/2019 1:04:15,129,255
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547996931907,Prepare implements,Operator and Patient Preparation,1/20/2019 1:04:17,1/20/2019 1:04:50,257,290
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547996986527,Clean puncture area,Operator and Patient Preparation,1/20/2019 1:04:52,1/20/2019 1:05:15,292,315
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997023849,Drap puncture area,Operator and Patient Preparation,1/20/2019 1:05:17,1/20/2019 1:05:47,317,347
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997062606,Prepare implements,Operator and Patient Preparation,1/20/2019 1:05:55,1/20/2019 1:07:00,355,420
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997130801,Ultrasound configuration,Ultrasound Preparation,1/20/2019 1:07:04,1/20/2019 1:07:51,424,471
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997183169,Cover probe,Ultrasound Preparation,1/20/2019 1:07:56,1/20/2019 1:10:10,476,610
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997200556,Gel in probe,Ultrasound Preparation,1/20/2019 1:08:13,1/20/2019 1:08:20,493,500
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997318986,Put sterile gel,Ultrasound Preparation,1/20/2019 1:10:12,1/20/2019 1:10:21,612,621
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997355699,Position probe,Ultrasound Preparation,1/20/2019 1:10:49,1/20/2019 1:10:49,649,649
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997370183,Ultrasound configuration,Ultrasound Preparation,1/20/2019 1:11:03,1/20/2019 1:11:31,663,691
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997400462,Anatomic identification,Locate Structures,1/20/2019 1:11:33,1/20/2019 1:11:33,693,693
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997404972,Compression identification,Locate Structures,1/20/2019 1:11:38,1/20/2019 1:11:38,698,698
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997454530,Anesthetize,Venous puncture,1/20/2019 1:12:28,1/20/2019 1:12:40,748,760
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997471695,Puncture,Venous puncture,1/20/2019 1:12:45,1/20/2019 1:13:09,765,789
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997497459,Blood return,Venous puncture,1/20/2019 1:13:10,1/20/2019 1:13:10,790,790
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997499312,Drop probe,Install Guidewire,1/20/2019 1:13:12,1/20/2019 1:13:12,792,792
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997507204,Remove syringe,Install Guidewire,1/20/2019 1:13:20,1/20/2019 1:13:30,800,810
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997522089,Guidewire install,Install Guidewire,1/20/2019 1:13:35,1/20/2019 1:14:47,815,887
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997601769,Remove trocar,Install Guidewire,1/20/2019 1:14:55,1/20/2019 1:15:01,895,901
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997609680,Check wire in short axis,Install Guidewire,1/20/2019 1:15:03,1/20/2019 1:15:10,903,910
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997618566,Check wire in long axis,Install Guidewire,1/20/2019 1:15:12,1/20/2019 1:15:15,912,915
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997623560,Wire in good position,Install Guidewire,1/20/2019 1:15:16,1/20/2019 1:15:16,916,916
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997628491,Widen pathway,Install Catheter,1/20/2019 1:15:21,1/20/2019 1:15:29,921,929
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997637912,Advance catheter,Install Catheter,1/20/2019 1:15:31,1/20/2019 1:16:59,931,1019
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997727799,Remove guidewire,Install Catheter,1/20/2019 1:17:01,1/20/2019 1:17:39,1021,1059
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997786888,Check flow and reflow,Install Catheter,1/20/2019 1:18:00,1/20/2019 1:18:11,1080,1091
+1547997805806-video_2.a_CVC,R_45_2A,Post,1547997799633,Check catheter position,Install Catheter,1/20/2019 1:18:13,1/20/2019 1:18:15,1093,1095
