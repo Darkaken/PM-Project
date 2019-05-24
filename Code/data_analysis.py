@@ -44,6 +44,7 @@ with open('log.csv', 'r') as data:
         else:
             used_ids.append(line[0])
             all_cases.append(Instance(line[0], line[1]))
+            all_cases[-1].add_activity(Activity(line[2], line[3]))
 
 with open("coeficients.csv", "r") as coeficientes:
 
@@ -71,7 +72,10 @@ def GetVectors(vector_list):
 
 
 new_vects = GetVectors(all_vectors[:])
+order, result = func.iterative_func_ordered_1(new_vects, func.distance_manhattan)
+print(result)
 
+'''
 results = bf.Solve(new_vects[:])
 
 os.chdir(os.path.join("..", "Data/Exported Results"))
@@ -98,4 +102,16 @@ with open("mejorOrdenamiento.txt", "w") as file:
         file.write(f'{line} \n')
 
 
+'''
 
+os.chdir(os.path.join('..', 'Cases'))
+
+for index in range(len(all_cases)):
+
+    with open(f'Case {index + 1}.csv', 'w') as case:
+
+        case.write(f'CASE ID: {all_cases[index].case_id}')
+
+        case.write('\n')
+        for element in [f'{x} \n' for x in [act.name for act in all_cases[index].activities]]:
+            case.write(element)
