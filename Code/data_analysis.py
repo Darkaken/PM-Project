@@ -110,7 +110,7 @@ for index in range(len(all_cases)):
 
     with open(f'Case {index + 1}.csv', 'w') as case:
 
-        case.write(f'CASE ID: {all_cases[index].case_id}')
+        case.write(f'CASE ID: {index + 1}')
 
         case.write('\n')
         for element in [f'{x} \n' for x in [act.name for act in all_cases[index].activities]]:
