@@ -1,6 +1,7 @@
 import os
 import Code.functions as func
 import Code.bruteforce as bf
+from datetime import datetime
 
 #######################  DEFINITIONS  #######################################
 
@@ -30,6 +31,7 @@ class Activity:
 
 all_cases = []
 used_ids = []
+int_to_id = dict()
 
 os.chdir(os.path.join("..", "Data"))
 
@@ -44,7 +46,6 @@ with open('log.csv', 'r') as data:
         else:
             used_ids.append(line[0])
             all_cases.append(Instance(line[0], line[1]))
-            all_cases[-1].add_activity(Activity(line[2], line[3]))
 
 with open("coeficients.csv", "r") as coeficientes:
 
@@ -56,62 +57,33 @@ for instance in all_cases:
     instance.set_vector(coeficients)
     all_vectors.append(instance.vector)
 
+for index in range(20):
+    int_to_id[index] = all_cases[index].case_id
+
 ############################# Instancing and Analysis ###########################
 
-def GetVectors(vector_list):
 
-    original = []
+vectors_test = []
 
-    for vector in vector_list:
-        if vector in original:
-            pass
-        else:
-            original.append(vector)
+original = []
 
-    return original
+for vector in all_vectors:
+    if vector not in original:
+        original.append(vector)
 
 
-new_vects = GetVectors(all_vectors[:])
-order, result = func.iterative_func_ordered_1(new_vects, func.distance_manhattan)
-print(result)
+order, best = func.iterative_func_ordered_1(original, func.distance_manhattan)
+res = bf.Solve(original[:], best)[0]
 
-'''
-results = bf.Solve(new_vects[:])
+with open("id_list.txt", "w") as file:
 
-os.chdir(os.path.join("..", "Data/Exported Results"))
-with open("mejorOrdenamiento.txt", "w") as file:
-
-    file.write("MEJORES SOLUCIONES ENCONTRADAS:")
+    file.write("Greedy:\n")
     file.write("\n")
+    for case in func.ListIDs(order, all_cases)[::-1]:
+        file.write(f"{case}\n")
+
     file.write("\n")
-
-    for result in results:
-
-        file.write(f"Distancia: {func.ManhattanTest(result)}")
-        file.write("\n")
-
-        for line in result:
-            file.write(str(line))
-            file.write("\n")
-
-        file.write("\n")
-        file.write("\n")
-
-    file.write('Orden de IDs: \n')
-    for line in func.ListIDs(results[0], all_cases):
-        file.write(f'{line} \n')
-
-
-'''
-
-os.chdir(os.path.join('..', 'Cases'))
-
-for index in range(len(all_cases)):
-
-    with open(f'Case {index + 1}.csv', 'w') as case:
-
-        case.write(f'CASE ID: {index + 1}')
-
-        case.write('\n')
-        for element in [f'{x} \n' for x in [act.name for act in all_cases[index].activities]]:
-            case.write(element)
+    file.write("Branch and Bound:\n")
+    file.write("\n")
+    for case in func.ListIDs(res, all_cases):
+        file.write(f"{case}\n")

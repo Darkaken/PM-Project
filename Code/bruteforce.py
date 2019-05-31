@@ -6,6 +6,7 @@ class DataBase(object):
 
         self.path = []
         self.soluciones = []
+        self.tsp_best = None
 
     def CheckSolution(self):
 
@@ -20,12 +21,13 @@ class DataBase(object):
 
             if test1 is True:
                 self.soluciones = [self.path[:]]
+                self.tsp_best = ManhattanTest(self.soluciones[0])
             elif test2 is True:
                 self.soluciones.append(self.path[:])
 
     def CheckDistance(self):
 
-        if ManhattanTest(self.path[:]) > 39:
+        if ManhattanTest(self.path[:]) > self.tsp_best:
             return False
         return True
 
@@ -80,13 +82,14 @@ def GetVectorss(vector_list):
     return original
 
 
-def Solve(all_vectors):
+def Solve(all_vectors, tsp_value):
 
     Datos = DataBase()
+    Datos.tsp_best = tsp_value
     result = RecurSolve(Datos, GetVectorss(all_vectors))
 
-    for res in result:
-        print(f"Distance: {ManhattanTest(res)}")
+    #for res in result:
+        #print(f"Distance: {ManhattanTest(res)}")
 
     original = []
 

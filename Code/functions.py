@@ -31,7 +31,7 @@ def filter_acts(log, important):
         line = line.split(",")
 
         if line[4] in important:
-            important_data.append(line[0].split("-")[0])
+            important_data.append(line[0])
             important_data += [line[2], line[4], line[5]]
 
             data.append(",".join(important_data))
@@ -99,7 +99,7 @@ def distance_manhattan(vector1, vector2):
     vector = []
 
     for index in range(len(vector1)):
-        vector.append(abs(vector1[index] - vector2[index]))
+            vector.append(abs(vector1[index] - vector2[index]))
 
     return sum(vector)
 
@@ -258,57 +258,18 @@ def Test(vectors, distance_alogrithm):
         print(vector)
 
 
-def distance_matrix(vector_list, distance_algorithm, save = False):
-
-    """
-
-    Function that creates a matrix of manhattan distances between all the vectors
-    and stores it in matrix.txt if save = True
-
-    """
+def tuplas(all_cases):
 
     os.chdir(os.path.join(os.getcwd(), 'Exported Results'))
 
-    alpha = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    with open("tuplas_distancia.txt", "w") as file:
 
-    matrix = [[' ' + letter + ' ' for letter in alpha[:len(vector_list) + 1]]]
-    all_values = []
+        for char1 in all_cases:
+            for char2 in all_cases:
 
-    for char1 in vector_list:
+                if char1 != char2:
+                    distance = distance_manhattan(char1.vector, char2.vector)
+                    file.write(f"{char1.case_id},{char2.case_id},{distance}")
+                    file.write("\n")
 
-        line = [' ' + alpha[len(matrix)] + ' ']
-        for char2 in vector_list:
 
-            distance = distance_algorithm(char1, char2)
-            all_values.append(distance)
-
-            if len(str(distance)) == 1:
-                distance = '|' + str(distance) + '|'
-
-            elif len(str(distance)) == 2:
-                distance = str(distance) + ' '
-
-            line.append(distance)
-
-        matrix.append(line)
-
-    if save is True:
-
-        file =  open('matrix.txt', 'w+')
-
-        for element in matrix:
-            file.write(' '.join(element))
-            file.write('\n')
-
-        file.write('\n')
-        file.write(f'Average Distance = {mean(all_values)}')
-        file.write('\n')
-        file.write('\n')
-        file.write(f'Maximum Distance = {max(all_values)}')
-        file.write('\n')
-        file.write(f'Minimum Distance = {min(all_values)}')
-
-        file.close()
-
-    os.chdir('..')
-    return matrix
