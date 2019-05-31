@@ -62,6 +62,7 @@ for index in range(20):
 
 ############################# Instancing and Analysis ###########################
 
+os.chdir('Exported Results')
 
 vectors_test = []
 
@@ -71,19 +72,28 @@ for vector in all_vectors:
     if vector not in original:
         original.append(vector)
 
+times_bf = []
+times_tsp = []
 
-order, best = func.iterative_func_ordered_1(original, func.distance_manhattan)
-res = bf.Solve(original[:], best)[0]
+for i in range(10):
 
-with open("id_list.txt", "w") as file:
+    tsp_1 = datetime.now()
+    order, best = func.iterative_func_ordered_1(original, func.distance_manhattan)
+    tsp_2 = datetime.now()
 
-    file.write("Greedy:\n")
-    file.write("\n")
-    for case in func.ListIDs(order, all_cases)[::-1]:
-        file.write(f"{case}\n")
+    bf1 = datetime.now()
+    res = bf.Solve(original[:], best)[0]
+    bf2 = datetime.now()
 
-    file.write("\n")
-    file.write("Branch and Bound:\n")
-    file.write("\n")
-    for case in func.ListIDs(res, all_cases):
-        file.write(f"{case}\n")
+    times_tsp.append(tsp_2 - tsp_1)
+    times_bf.append(bf2 - bf1)
+
+with open('tiempos_exec.txt', 'w') as file:
+
+    for char in times_tsp:
+        file.write(f'{char}\n')
+
+    file.write('\n')
+
+    for char in times_bf:
+        file.write(f'{char}\n')
