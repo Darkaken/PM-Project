@@ -2,6 +2,7 @@ import os
 import Code.functions as func
 import Code.bruteforce as bf
 from datetime import datetime
+import numpy as np
 
 #######################  DEFINITIONS  #######################################
 
@@ -93,7 +94,16 @@ with open('tiempos_exec.txt', 'w') as file:
     for char in times_tsp:
         file.write(f'{char}\n')
 
+    times_tsp = [x.total_seconds() for x in times_tsp]
+
+    file.write(f"{np.var(times_tsp)} \n")
+
     file.write('\n')
 
     for char in times_bf:
         file.write(f'{char}\n')
+
+    times_bf = [x.total_seconds() for x in times_bf]
+
+    file.write(f"{np.var(times_bf)} \n")
+
